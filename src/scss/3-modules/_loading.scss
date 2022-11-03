@@ -1,0 +1,24 @@
+@use '../1-base/variables' as var;
+
+.loading {
+    max-width: 7rem;
+    margin: 7rem auto;
+
+    svg {
+        height: 7rem;
+        width: 7rem;
+        fill: var.$color-primary;
+        animation: rotate 2s infinite linear; 
+    }
+    
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,11 @@
+@use '../1-base/variables' as var;
+
+body {
+    background-image: var.$gradient;
+    font-family: 'Nunito Sans', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var.$color-grey-dark-1;
+    position: relative;
+    
+}

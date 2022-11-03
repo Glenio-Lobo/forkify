@@ -1,0 +1,190 @@
+@use '../1-base/variables' as var;
+
+%btn {
+    font-family: inherit;
+    text-transform: uppercase;
+    background-image: var.$gradient;
+    border: none;
+    border-radius: 15rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    svg {
+        fill: white;
+    }
+
+    &:hover{
+        transform: scale(1.05, 1.05);
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
+// Botão de tamanho normal
+.btn {
+    @extend %btn;
+
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    svg {
+        fill: white;
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-right: 10px;
+    }
+}
+
+// Botão menor
+.btn--smaller {
+    &,
+    &:link,
+    &:visited {
+        @extend %btn;
+
+        font-size: 1.4rem;
+        font-weight: 600;
+        padding: 1.25rem 2.25rem;
+
+        span {
+            margin-right: 1rem;
+        }
+
+        svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+}
+
+//navlist buttons
+.navlist__btn{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
+    height: 100%;
+    cursor: pointer;
+
+    span{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    &:hover{
+        background-color: var.$color-grey-light-2;
+    }
+
+    svg {
+        fill: var.$color-primary;
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-right: 8px;
+    }
+}
+
+//pagination buttons
+.page-arrows{
+    &::before {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    
+    &--prev {
+        float: left;
+    }
+    &--next {
+        float: right;
+    }
+
+    &--prev, &--next{
+        display: flex;
+        align-items: center;
+        color: var.$color-primary;
+        font-weight: 600;
+        border: none;
+        background-color: var.$color-grey-light-1;
+        border-radius: 10rem;
+        font-size: 1.3rem;
+        padding: 0.8rem 1.2rem;
+        cursor: pointer;
+
+        svg{
+            fill: var.$color-primary;
+            height: 1.6rem;
+            width: 1.6rem;
+            margin: 0 0.2rem;
+        }
+        
+        span {
+            margin: 0 0.4rem;
+        }
+    }
+}
+
+// Increase/Decrease Recipe Buttons
+.recipe__buttons{
+    display: flex;
+    margin-left: 1.6rem;
+
+    button {
+        border: none;
+        background: none;
+        margin-left: 0.4rem;
+        cursor: pointer;
+        transition: 0.3s;
+        svg {
+            fill: var.$color-primary;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        &:hover svg {
+            fill: var.$color-grad-2;
+            transform: translateY(-1px);
+          }
+        
+        &:active svg {
+            fill: var.$color-grad-2;
+            transform: translateY(0);
+        }
+    }
+}
+
+//Bookmark Selection Button
+
+.recipe__bookmark {
+    background-image: var.$gradient;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    transition: 0.3s;
+
+    svg{
+        height: 2.5rem;
+        width: 2.5rem;
+        fill: white;
+    }
+
+    &:hover {
+        transform: scale(1.07);
+    }
+}

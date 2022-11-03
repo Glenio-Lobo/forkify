@@ -1,0 +1,33 @@
+@use '../1-base/variables' as var;
+
+.search-result{
+    grid-area: results;
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    
+    &__list{
+        margin-bottom: 2rem;
+    }
+}
+
+.page-arrows{
+    padding: 0 3.5rem;
+    font-family: inherit;
+    margin-top: auto;
+}
+
+.page-arrow__page{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var.$color-primary;
+}
+
+.copyright {
+    padding: 0 3.5rem;
+    margin-top: 4rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    color: var.$color-grey-dark-2;
+}

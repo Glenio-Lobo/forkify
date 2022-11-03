@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forkify - Procure mais de 1 000 000 receitas.</title>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!--Page Icon-->
+    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+
+    <!--Css-->
+    <link rel="stylesheet" href="src/css/forkify.css">
+
+    <!--Scripts-->
+    <script type='module' defer src="src/js/controller.js"></script>
+</head>
+<body>
+    <main class="content">
+        <header class="header" id="header">
+            <figure class="logo">
+                <img src="src/img/logo.png" alt="Forkify Logo" class="logo__img">
+            </figure>
+
+            <form class="search">
+                <input type="text" class="search__input" placeholder="Search over 100000 recipes...">
+                <button class="search__btn btn">
+                    <svg class="search__icon btn__icon">
+                        <use href="src/img/icons.svg#icon-search"></use>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </form>
+            
+            <ul class="navlist">
+                <li class="navlist__item">
+                    <button class="navlist__btn navlist__btn--add--recipe">
+                        <svg class="navlist__icon">
+                            <use href="src/img/icons.svg#icon-edit"></use>
+                        </svg>
+                        <span>add recipe</span>
+                    </button>
+                </li>
+
+                <li class="navlist__item">
+                    <button class="navlist__btn navlist__btn--bookmarks">
+                        <svg class="navlist__icon">
+                            <use href="src/img/icons.svg#icon-bookmark"></use>
+                        </svg>
+                        <span>bookmarks</span>
+                    </button>
+
+                    <div class="bookmark">
+                        <ul class="bookmark__list">
+                            <li class="bookmark__item">
+                                <div class="message">
+                                    <div>
+                                        <svg class="recipe__begin__icon">
+                                            <use href="src/img/icons.svg#icon-alert-triangle"></use>
+                                        </svg>
+                                    </div>
+                                    
+                                    <span>No bookmarks yet. Find a nice recipe and bookmark it ;)</span>
+                                </div>
+                            </li>
+
+                            <!-- <li class="preview bookmark__item">
+                                <a href="#" class="preview__link">
+                                    <figure class="preview__figure">
+                                        <img src="src/img/img-teste.png" alt="bookmark product image">
+                                    </figure>
+
+                                    <div class="preview__content">
+                                        <h4>Produto teste teste</h4>
+                                        <p>Teste Publisher</p>
+                                    </div>
+
+                                    <div class="preview__user">
+                                        <svg>
+                                            <use href="src/img/icons.svg#icon-user"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </li> -->
+
+                            <!-- <li class="bookmark__item">
+                                <a href="#" class="bookmark__link">
+                                    <figure class="bookmark__fig">
+                                        <img src="src/img/img-teste.png" alt="bookmark product image">
+                                    </figure>
+
+                                    <div class="bookmark__content">
+                                        <h4 class="bookmark__title">Produto teste teste</h4>
+                                        <p class="bookmark__publisher">Teste Publisher</p>
+                                    </div>
+
+                                    <div class="bookmark__user">
+                                        <svg>
+                                            <use href="src/img/icons.svg#icon-user"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </header>
+
+        <section class="search-result">
+            <ul class="search-result__list">
+                <!-- <li class="error">
+
+                    <div>
+                        <svg>
+                            <use href='src/img/icons.svg#icon-alert-triangle'></use>
+                        </svg>
+                    </div>
+                    
+                    <span>
+                        Não foi possível encontrar a receita pesquisada!
+                    </span>
+                </li>
+
+                <li class="loading">
+                    <svg>
+                        <use href="src/img/icons.svg#icon-loader"></use>
+                    </svg>
+                </li>
+
+                <li class="preview">
+                    <a class="preview__link">
+                        <figure class="preview__figure">
+                            <img src="src/img/img-teste.png" alt="Product Image">
+                        </figure>
+
+                        <div class="preview__content">
+                            <h4>BOURBON ICE CREAM</h4>
+                            <p>EPICURIOUS</p>
+                        </div>
+
+                        <div class="preview__user">
+                            <svg>
+                                <use href="src/img/icons.svg#icon-user"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </li> -->
+            </ul>
+
+            <div class="page-arrows">
+                <!-- <button class="page-arrows--prev">
+                    <svg class="page-arrow--icon">
+                        <use href="src/img/icons.svg#icon-arrow-left"></use>
+                    </svg>
+                    <span>Page 2</span>
+                </button>
+
+                <button class="page-arrows--next">
+                    <span>Page 3</span>
+                    <svg class="page-arrow--icon">
+                        <use href="src/img/icons.svg#icon-arrow-right"></use>
+                    </svg>
+                </button> -->
+            </div> 
+
+            <div class="copyright">
+                <p class="copyright__text">
+                    &copy; Copyright by Jonas Schmedtmann. 
+                    Use for learning or your portfolio. 
+                    Don't use to teach. 
+                    Don't claim as your own.
+                </p>
+            </div>
+        </section>
+        
+        <section class="recipe">
+            <div class="message">
+                <div>
+                    <svg class="recipe__begin__icon">
+                        <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
+                </div>
+                
+                <span>Start by searching for a recipe or an ingredient. Have fun!</span>
+            </div>
+
+            <!-- <div class="loading">
+                <svg>
+                  <use href="src/img/icons.svg#icon-loader"></use>
+                </svg>
+            </div> -->
+
+            <!-- <figure class="recipe__logo">
+                <img src="src/img/img-teste.png" alt="Imagem da receita" class="recipe__img">
+                <h1 class="recipe__title">
+                    <span>Pizza Cassarole Teste</span>
+                </h1>
+            </figure>
+
+            <div class="recipe__details">
+                <div class="recipe__info recipe__info--minutes">
+                    <svg class="recipe__icon">
+                        <use href="src/img/icons.svg#icon-clock"></use>
+                    </svg>
+                    <p class="recipe__info__description">
+                        <span>45</span> minutes
+                    </p>
+                </div>
+
+                <div class="recipe__info recipe__info--servings">
+                    <svg class="recipe__icon">
+                        <use href="src/img/icons.svg#icon-users"></use>
+                    </svg>
+                    <p class="recipe__info__description">
+                        <span>4</span> servings
+                    </p>
+                </div>
+
+                <div class="recipe__buttons">
+                    <button class="recipe__btn recipe__btn--decrease">
+                        <svg class="recipe__btn__icon">
+                            <use href="src/img/icons.svg#icon-minus-circle"></use>
+                        </svg>
+                    </button>
+
+                    <button class="recipe__btn recipe__btn--increase">
+                        <svg class="recipe__btn__icon">
+                            <use href="src/img/icons.svg#icon-plus-circle"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="recipe__user">
+                    <svg class="recipe__user__icon">
+                        <use href="src/img/icons.svg#icon-user"></use>
+                    </svg>
+                </div>
+
+                <button class="recipe__bookmark">
+                    <svg class="recipe__bookmark__icon">
+                        <use href="src/img/icons.svg#icon-bookmark"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="recipe__ingredients ingredients">
+                <h3 class="ingredients__title">recipe ingredients</h3>
+
+                <ul class="ingredients__list">
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+                    
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+
+                    <li class="ingredients__item">
+                        <svg class="ingredients__icon">
+                            <use href="src/img/icons.svg#icon-check"></use>
+                        </svg>
+                        <p class="ingredients__description">
+                            <span class="ingredients__quant">4 1/2</span> 
+                            <span class='ingredients__units'>cups</span>
+                            uncooked egg noodles
+                      </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="recipe__directions directions">
+                <h3 class="directions__title">how to cook it</h3>
+                <p class="directions__description">
+                    This recipe was carefully designed and tested by 
+                    <span class="directions__tester">All Recipes</span>. Please check out directions at their website.
+                </p>
+
+                <a href="" class="btn--smaller directions__btn" target="_blank">
+                    <span>directions</span>
+                    <svg class="directions__btn__icon">
+                        <use href="src/img/icons.svg#icon-arrow-right"></use>
+                    </svg>
+                </a>
+            </div> -->
+        </section>
+    </main>
+
+    <div class="overlay hidden"></div>
+    <div class="add-recipe hidden">
+        <button class="btn--close">&times;</button>
+
+        <form action="" class="upload">
+            <div class="upload__column">
+                <h2 class="upload__title">recipe data</h2>
+
+                <label for="name" class="upload__label">Title</label>
+                <input type="text" name="title" id='title' value='TEST' placeholder="Insert Name">
+
+                <label for="url" class="upload__label">URL</label>
+                <input type="text" name="sourceUrl" id='sourceUrl' value='TEST22' placeholder="Insert Source URL">
+
+                <label for="image-url" class="upload__label">Image URL</label>
+                <input type="text" name="imageUrl" id='imageUrl' value='TEST' placeholder="Insert Image URL">
+
+                <label for="publisher" class="upload__label">Publisher</label>
+                <input type="text" name="publisher" id='publisher' value='TEST' placeholder="Insert Publisher">
+
+                <label for="Prep" class="upload__label">Preparation</label>
+                <input type="number" name="cookingTime" id='cookingTime'  min='0' value='23' placeholder="Insert Time of Preparation">
+
+
+                <label for="servings" class="upload__label">Servings</label>
+                <input type="number" name="servings" id='servings' min='0' value='23' placeholder="Insert Number of Servings">
+            </div>
+
+            <div class="upload__column">
+                <h2 class="upload__title">ingredients</h2>
+
+                <label for="ingredient1" class="upload__label">Ingredient 1</label>
+                <input type="text" placeholder="Quantity, unit, description" value="0.5,kg,Rice" id="ingredient1" name="ingredient1">
+
+                <label for="ingredient2" class="upload__label">Ingredient 2</label>
+                <input type="text" placeholder="Quantity, unit, description" value="1,,Avocado" id="ingredient2" name="ingredient2">
+                
+                <label for="ingredient3" class="upload__label">Ingredient 3</label>
+                <input type="text" placeholder="Quantity, unit, description" value=',,salt' id="ingredient3" name="ingredient3">
+
+                <label for="ingredient4" class="upload__label">Ingredient 4</label>
+                <input type="text" placeholder="Quantity, unit, description" id="ingredient4" name="ingredient4">
+                
+                <label for="ingredient5" class="upload__label">Ingredient 5</label>
+                <input type="text" placeholder="Quantity, unit, description" id="ingredient5" name="ingredient5">
+                
+                <label for="ingredient6" class="upload__label">Ingredient 6</label>
+                <input type="text" placeholder="Quantity, unit, description" id="ingredient6" name="ingredient6">
+            </div>
+
+            <button class="btn upload__btn">
+                <svg class="upload__icon">
+                    <use href="src/img/icons.svg#icon-upload-cloud"></use>
+                    <span>upload</span>
+                </svg>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+@use '../1-base/variables' as var;
+
+.recipe {
+    background-color: var.$color-grey-light-1;
+
+    &__logo{
+        height: 32rem;
+        position: relative;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient( to right bottom, var.$color-grad-1, var.$color-grad-2 );
+            opacity: 0.5;
+        }
+
+        h1 {
+            position: absolute;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 20%) skewY(-6deg);
+            text-align: center;
+            line-height: 1.65;
+            width: 50%;
+
+            span {
+                -webkit-box-decoration-break: clone;
+                box-decoration-break: clone;
+                background-image: linear-gradient( to right bottom, var.$color-grad-1, var.$color-grad-2 );
+                padding: 1.3rem 2.5rem;
+            }
+        }
+
+        // h1::after {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     content: '';
+        //     background-image: linear-gradient( to right bottom, var.$color-grad-1, var.$color-grad-2 );
+        //     z-index: -1;
+        //     height: 100%;
+        //     width: 100%;
+        //     transform: scale(1.1, 1.1);
+        //     -webkit-box-decoration-break: clone;
+        //     box-decoration-break: clone;
+        // }
+        
+    }
+    
+    &__details{
+        display: flex;
+        align-items: center;
+        padding: 7.5rem 8rem 3.5rem 8rem;
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        
+        p {
+            font-size: 1.7rem;
+            text-transform: uppercase;
+
+            span {
+                font-weight: bolder;
+            }
+        }
+
+        svg {
+            background: none;
+            fill: var.$color-primary;
+            height: 2.35rem;
+            width: 2.35rem;
+            margin-right: 1.15rem;
+        }
+
+        &--minutes{
+            margin-right: 4.5rem;
+        }
+    }
+
+    &__buttons{
+        margin-right: 5rem;
+    }
+}
+
+.ingredients{
+    padding: 5rem 8rem 0 8rem;
+    font-size: 1.6rem;
+    background-color: var.$color-grey-light-2;
+
+    &__title, &__calories{
+        color: var.$color-primary;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+
+    &__calories{
+        padding: 5rem 0;
+        
+        span{      
+            color: var.$color-grey-dark-2
+        }
+    }
+
+    &__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem 3rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        svg {
+            flex: 0 0 auto;
+            height: 2rem;
+            width: 2rem;
+            fill: var.$color-primary;
+            margin-right: 1rem;
+        }
+    }
+}
+
+.directions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 10rem;
+
+    &__title{
+        color: var.$color-primary;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+
+    &__description {
+        font-size: 1.8rem;
+        color: var.$color-grey-dark-2;
+        text-align: center;
+        margin-bottom: 3.5rem;
+
+        span {
+            font-weight: bold;
+        }
+    }
+}

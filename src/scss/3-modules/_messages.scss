@@ -1,0 +1,24 @@
+@use '../1-base/variables' as var;
+
+.error, .message{
+    display: flex;
+    align-items: center;
+    max-width: 40rem;
+    padding: 5rem 4rem;
+    margin: 0 auto;
+    
+     
+    span {
+        margin-left: 1.5rem;
+        line-height: 1.6;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    svg {
+        fill: var.$color-primary;
+        height: 3rem;
+        width: 3rem;
+    }
+
+}

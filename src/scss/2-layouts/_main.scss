@@ -1,0 +1,19 @@
+@use '../1-base/variables' as var;
+
+.content{
+    max-width: 120rem;
+    min-height: 100rem;
+    margin: 4vw auto;
+
+    overflow: hidden;
+    background-color: white;
+    border-radius: 0.8rem;
+    box-shadow: 0 2rem 6rem 0.5rem rgb(97 85 81 / 20%);
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 10rem minmax(100rem, auto);
+    grid-template-areas: 
+        "head head"
+        "results recipe";
+}

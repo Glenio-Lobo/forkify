@@ -1,0 +1,58 @@
+@use '../1-base/variables' as var;
+
+.header{
+    grid-area: head;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var.$color-grey-light-1;
+}
+
+.logo img{
+    height: 4.6rem;
+    margin-left: 4rem;
+}
+
+.search{
+    display: flex;
+    transition: all 0.3s;
+    background-color: white;
+    border-radius: 15rem;
+    padding-left: 3rem;
+
+    &__input{
+        font-family: inherit;
+        color: inherit;
+        border: none;
+        width: 30rem;
+        background-color: white;
+        border-radius: 15rem;
+        font-size: 1.8rem;
+
+        &:focus{
+            outline: none;
+        }  
+        
+        &::placeholder{
+            font-size: 1.7rem;
+            color: var.$color-grey-light-3;
+        }
+    }
+
+    &:focus-within{
+        transform: translateY(-2px);
+        box-shadow: 0 0.6rem 3rem rgba(var.$color-grey-dark-1, 0.2);
+    }
+}
+
+.navlist{
+    margin-right: 2.5rem;
+    height: 100%;
+    display: flex;
+    
+    &__item{
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+}
