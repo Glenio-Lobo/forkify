@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/recipeView.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/recipeView.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** 
+ * @module recipeView
+ * @description View of the recipe 
+ */
+
+// @ts-ignore
+import icons from 'url:../../img/icons.svg';
+import { Fraction } from 'fractional';
+import View from './view.js';
+
+/**
+ * Recipe View Class
+ * @extends View
+ */
+class RecipeView extends View{
+    // #parentElement = document.querySelector('.recipe');
+    // #errorMessage = 'We could not find that recipe. Please try another one!';
+    // #message = '';
+    
+    /** Build a RecibeView */
+    constructor(){
+        super();
+        this.setParentElement = document.querySelector('.recipe');
+        this.setErrorMessage = 'We could not find that recipe. Please try another one!';
+        this.setMessage = '';
+    }
+
+    /**
+     * Add two event listeners for the renderization of the recipe on the view.
+     * The events added are the hashchange and load, both listened by the window.
+     * @param {function} handle 
+     */
+    addHandlerRender(handle){
+        // @ts-ignore
+        ['hashchange', 'load'].forEach( event => window.addEventListener(event, handle));
+    }
+
+    /**
+     * Adds click event to update the recipe servings
+     * @param {function} handle 
+     */
+    addHandlerUpdateServings(handle){
+        this.getParentElement.addEventListener('click', function(e){ 
+            // @ts-ignore
+            const btn = e.target.closest('.recipe__btn');
+            if(!btn) return;
+            const updateValue = Number(btn.dataset.updateto);
+            if(updateValue > 0) handle(updateValue);
+        })
+    }
+
+    /**
+     * Adds a click event to add or remove a recipe from the bookmark list
+     * @param {function} handle 
+     */
+    addHandlerAddBookmark(handle){
+        this.getParentElement.addEventListener('click', function(e) {
+            // @ts-ignore
+            const btn = e.target.closest('.recipe__bookmark');
+            if(!btn) return;
+            handle();
+        })
+    }
+
+    /** 
+     * Generates the recipe markup
+     * @private
+     * @returns {string}
+     */
+    _generateMarkup(){
+        return `&lt;figure class="recipe__logo">
+                        &lt;img src=${this.getData.imageUrl} alt="Imagem da receita" class="recipe__img">
+                        &lt;h1 class="recipe__title">
+                            &lt;span>${this.getData.title}&lt;/span>
+                        &lt;/h1>
+                    &lt;/figure>
+    
+                    &lt;div class="recipe__details">
+                        &lt;div class="recipe__info recipe__info--minutes">
+                            &lt;svg class="recipe__icon">
+                                &lt;use href="${icons}#icon-clock">&lt;/use>
+                            &lt;/svg>
+                            &lt;p class="recipe__info__description">
+                                &lt;span>${this.getData.cookingTime}&lt;/span> minutes
+                            &lt;/p>
+                        &lt;/div>
+    
+                        &lt;div class="recipe__info recipe__info--servings">
+                            &lt;svg class="recipe__icon">
+                                &lt;use href="${icons}#icon-users">&lt;/use>
+                            &lt;/svg>
+                            &lt;p class="recipe__info__description">
+                                &lt;span>${this.getData.servings}&lt;/span> servings
+                            &lt;/p>
+                        &lt;/div>
+    
+                        &lt;div class="recipe__buttons">
+                            &lt;button class="recipe__btn recipe__btn--decrease" data-updateto=${this.getData.servings-1}>
+                                &lt;svg class="recipe__btn__icon">
+                                    &lt;use href="${icons}#icon-minus-circle">&lt;/use>
+                                &lt;/svg>
+                            &lt;/button>
+    
+                            &lt;button class="recipe__btn recipe__btn--increase" data-updateto=${this.getData.servings+1}>
+                                &lt;svg class="recipe__btn__icon">
+                                    &lt;use href="${icons}#icon-plus-circle">&lt;/use>
+                                &lt;/svg>
+                            &lt;/button>
+                        &lt;/div>
+
+                        &lt;div class="recipe__user ${this.getData.key ?  '' : 'hidden'}">
+                            &lt;svg class="recipe__user__icon">
+                                &lt;use href="${icons}#icon-user">&lt;/use>
+                            &lt;/svg>
+                        &lt;/div>
+
+                        &lt;button class="recipe__bookmark">
+                            &lt;svg class="recipe__bookmark__icon">
+                                &lt;use href="${icons}#icon-bookmark${this.getData.bookmarked ? '-fill' : ''}">&lt;/use>
+                            &lt;/svg>
+                        &lt;/button>
+                    &lt;/div>
+    
+                    &lt;div class="recipe__ingredients ingredients">
+                        &lt;h3 class="ingredients__title">recipe ingredients&lt;/h3>
+    
+                        &lt;ul class="ingredients__list">
+                            ${this.getData.ingredients.map( ing => this._generateIngredientMarkup(ing)).join('')}
+                        &lt;/ul>
+                        
+                        ${this.getData.totalCalories ? 
+                            `&lt;h3 class="ingredients__calories"> 
+                                &lt;p>Total Calories:&lt;/p> 
+                                &lt;span>${this.getData.totalCalories.toFixed(2)} KCAL&lt;/span> 
+                                &lt;/h3>`
+                            : ''}
+                    &lt;/div>
+    
+                    &lt;div class="recipe__directions directions">
+                        &lt;h3 class="directions__title">how to cook it&lt;/h3>
+                        &lt;p class="directions__description">
+                            This recipe was carefully designed and tested by 
+                            &lt;span class="directions__tester">${this.getData.publisher}&lt;/span>. Please check out directions at their website.
+                        &lt;/p>
+    
+                        &lt;a href=${this.getData.sourceUrl} class="btn--smaller directions__btn" target="_blank">
+                            &lt;span>directions&lt;/span>
+                            &lt;svg class="directions__btn__icon">
+                                &lt;use href="${icons}#icon-arrow-right">&lt;/use>
+                            &lt;/svg>
+                        &lt;/a>
+                    &lt;/div>`
+    }
+
+    /**
+     * Returns the ingredient markup
+     * @private
+     * @param {Object} ing Ingredient Object 
+     * @returns {string}
+     */
+    _generateIngredientMarkup(ing){
+        return `
+            &lt;li class="ingredients__item">
+                &lt;svg class="ingredients__icon">
+                    &lt;use href="${icons}#icon-check">&lt;/use>
+                &lt;/svg>
+                &lt;p class="ingredients__description">
+                    &lt;span class="ingredients__quant">
+                    ${ ing.quantity ? new Fraction(ing.quantity).toString() : '' }
+                    &lt;/span> 
+                    &lt;span class='ingredients__units'>${ing.unit}&lt;/span>
+                    ${ing.description}
+                &lt;/p>
+            &lt;/li>`
+    }
+}
+
+export default new RecipeView();</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-View.html">View</a></li><li><a href="module-controller.html">controller</a></li><li><a href="module-helpers.html">helpers</a></li><li><a href="module-model.html">model</a></li><li><a href="module-recipeView.html">recipeView</a></li></ul><h3>Classes</h3><ul><li><a href="module-View.html">View</a></li><li><a href="module-recipeView-RecipeView.html">RecipeView</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Oct 07 2023 23:34:42 GMT-0300 (Horário Padrão de Brasília)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

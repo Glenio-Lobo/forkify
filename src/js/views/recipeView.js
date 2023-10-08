@@ -1,12 +1,23 @@
+/** 
+ * @module recipeView
+ * @description View of the recipe 
+ */
+
+// @ts-ignore
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 import View from './view.js';
 
+/**
+ * Recipe View Class
+ * @extends View
+ */
 class RecipeView extends View{
     // #parentElement = document.querySelector('.recipe');
     // #errorMessage = 'We could not find that recipe. Please try another one!';
     // #message = '';
     
+    /** Build a RecibeView */
     constructor(){
         super();
         this.setParentElement = document.querySelector('.recipe');
@@ -14,12 +25,23 @@ class RecipeView extends View{
         this.setMessage = '';
     }
 
+    /**
+     * Add two event listeners for the renderization of the recipe on the view.
+     * The events added are the hashchange and load, both listened by the window.
+     * @param {function} handle 
+     */
     addHandlerRender(handle){
+        // @ts-ignore
         ['hashchange', 'load'].forEach( event => window.addEventListener(event, handle));
     }
 
+    /**
+     * Adds click event to update the recipe servings
+     * @param {function} handle 
+     */
     addHandlerUpdateServings(handle){
         this.getParentElement.addEventListener('click', function(e){ 
+            // @ts-ignore
             const btn = e.target.closest('.recipe__btn');
             if(!btn) return;
             const updateValue = Number(btn.dataset.updateto);
@@ -27,14 +49,24 @@ class RecipeView extends View{
         })
     }
 
+    /**
+     * Adds a click event to add or remove a recipe from the bookmark list
+     * @param {function} handle 
+     */
     addHandlerAddBookmark(handle){
         this.getParentElement.addEventListener('click', function(e) {
+            // @ts-ignore
             const btn = e.target.closest('.recipe__bookmark');
             if(!btn) return;
             handle();
         })
     }
 
+    /** 
+     * Generates the recipe markup
+     * @private
+     * @returns {string} The markup that represents the recipe Html
+     */
     _generateMarkup(){
         return `<figure class="recipe__logo">
                         <img src=${this.getData.imageUrl} alt="Imagem da receita" class="recipe__img">
@@ -95,11 +127,13 @@ class RecipeView extends View{
                         <ul class="ingredients__list">
                             ${this.getData.ingredients.map( ing => this._generateIngredientMarkup(ing)).join('')}
                         </ul>
-
-                        <h3 class="ingredients__calories">
+                        
+                        ${this.getData.totalCalories ? 
+                            `<h3 class="ingredients__calories"> 
                                 <p>Total Calories:</p> 
-                                <span>${this.getData.totalCalories.toFixed(2)} KCAL</span>
-                        </h3>
+                                <span>${this.getData.totalCalories.toFixed(2)} KCAL</span> 
+                                </h3>`
+                            : ''}
                     </div>
     
                     <div class="recipe__directions directions">
@@ -118,6 +152,12 @@ class RecipeView extends View{
                     </div>`
     }
 
+    /**
+     * Returns the ingredient markup
+     * @private
+     * @param {Object} ing Ingredient Object 
+     * @returns {string} The markup that represents the ingredient html
+     */
     _generateIngredientMarkup(ing){
         return `
             <li class="ingredients__item">

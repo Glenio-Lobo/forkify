@@ -4,7 +4,10 @@
   "description": "Recipe application",
   "default": "index.html",
   "scripts": {
+    "doc": "jsdoc -c jsdoc.json",
     "start": "parcel index.html",
+    "sass": "sass --watch src/scss/forkify.scss:src/css/forkify.css",
+    "dev": "npm-run-all --parallel start sass",
     "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "fractional": "^1.0.0",
+    "jsdoc": "^4.0.2",
+    "npm-run-all": "^4.1.5",
     "parcel": "^2.7.0",
     "sass": "^1.55.0"
   },

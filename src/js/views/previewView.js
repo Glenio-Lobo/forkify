@@ -1,16 +1,32 @@
+/** 
+ * @module previewView
+ * @description Generates a markup with reduced information about the recipes.
+ */
 import View from './view.js';
+//@ts-ignore
 import icons from 'url:../../img/icons.svg';
 
+/**
+ * PreviewView class
+ * @extends View
+ */
 export default class PreviewView extends View{
 
+    /**
+     * Creates the markup preview of all available recipes
+     * @returns {string} HTML representing the preview markup of all recipes
+     */
     _generateMarkup(){
         return this.getData.map(recipe => this._generateMarkupPreview(recipe)).join('');
     }
 
+    /**
+     * Creates a preview markup of an recipe
+     * @param {Object} recipe Recipe Object
+     * @returns {string} HTML representing the preview markup
+     */
     _generateMarkupPreview(recipe){
         const id  = window.location.hash.slice(1);
-
-        // console.log('Recipe being rendered: ', this.getData);
 
         return `<li class="preview">
                     <a class="preview__link ${ id === recipe.id ? 'preview__link--active' : ''}" href="#${recipe.id}">
