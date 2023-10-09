@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: views/bookmarkView.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,51 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: views/bookmarkView.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module bookmarkView
+ * @description View that generates the html for the recipe previews viewed on the bookmarks list
+ */
+import View from './view.js';
+//@ts-ignore
+import icons from 'url:../../img/icons.svg';
+import PreviewView from './previewView.js'
 
+/**
+ * BookmarkView Class
+ * @extends PreviewView
+ */
+class BookmarkView extends PreviewView{
+    /** Creates a new BookmarkView object */
+    constructor(){
+        super();
+        this.setParentElement = document.querySelector('.bookmark__list');
+        this.setErrorMessage = 'No bookmarks yet. Find a nice recipe and bookmark it ;)';
+        this.setMessage = '';
+    }
 
-    <h3> </h3>
+    /**
+     * Adds a listener on the window load event that runs the handler.
+     * @param {function} handler 
+     */
+    addHandlerRender(handler){
+        window.addEventListener('load', function(){
+            handler();
+        })
+    }
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default new BookmarkView();</code></pre>
+        </article>
+    </section>
 
 
 

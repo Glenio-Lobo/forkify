@@ -26,13 +26,16 @@ class PaginationView extends View{
         if(this.getData.page === 1 && numPages === 1) return '';
 
         // 2 Caso: Está na página 1 e possui mais páginas
-        if(this.getData.page === 1 && numPages > 1) return this._generateMarkupNextArrow(this.getData.page+1);
+        if(this.getData.page === 1 && numPages > 1) 
+            return this._generateMarkupNumberPages(this.getData.page, numPages) + this._generateMarkupNextArrow(this.getData.page+1);
 
         // 3 Caso: Ultima página
-        if(this.getData.page === numPages) return this._generateMarkupPreviousArrow(this.getData.page-1);
+        if(this.getData.page === numPages) 
+            return this._generateMarkupNumberPages(this.getData.page, numPages) + this._generateMarkupPreviousArrow(this.getData.page-1);
 
         // 4 Caso: Alguma outra página
-        return this._generateMarkupPreviousArrow(this.getData.page-1) 
+        return this._generateMarkupPreviousArrow(this.getData.page-1)
+                + this._generateMarkupNumberPages(this.getData.page, numPages)
                 + this._generateMarkupNextArrow(this.getData.page+1);
     }
 
@@ -51,6 +54,9 @@ class PaginationView extends View{
         });
     }
 
+    _generateMarkupNumberPages(page, numberOfPages){
+        return `<span class="page-arrows__numberPages">Page ${page} of ${numberOfPages}</span>`;
+    }
     /**
      * Generates the markup for the previous arrow 
      * @param {number} page
@@ -58,7 +64,7 @@ class PaginationView extends View{
      * @returns {string}
      */
     _generateMarkupPreviousArrow(page){
-        return `<button data-goto=${page} class="page-arrow page-arrows--prev">
+        return `<button data-goto=${page} class="page-arrow page-arrow--prev">
                     <svg class="page-arrow--icon">
                         <use href="${icons}#icon-arrow-left"></use>
                     </svg>
@@ -74,7 +80,7 @@ class PaginationView extends View{
      */
     _generateMarkupNextArrow(page){
         return `
-                <button data-goto=${page} class="page-arrow page-arrows--next">
+                <button data-goto=${page} class="page-arrow page-arrow--next">
                     <span>Page ${page}</span>
                     <svg class="page-arrow--icon">
                         <use href="${icons}#icon-arrow-right"></use>

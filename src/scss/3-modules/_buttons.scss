@@ -95,20 +95,21 @@
 }
 
 //pagination buttons
-.page-arrows{
-    &::before {
-        content: '';
-        display: table;
-        clear: both;
-    }
+.page-arrow{
+    // &::before {
+    //     content: '';
+    //     display: table;
+    //     clear: both;
+    // }
     
-    &--prev {
-        float: left;
-    }
-    &--next {
-        float: right;
+    &--prev:last-child{
+        margin-right: auto;
     }
 
+    &--next:last-child{
+        margin-left: auto;
+    }
+    
     &--prev, &--next{
         display: flex;
         align-items: center;

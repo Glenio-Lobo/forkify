@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: views/resultsView.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: views/resultsView.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module ResultsView
+ * @description View of the search results
+ */
+import View from './view.js';
+import PreviewView from './previewView.js'
+// @ts-ignore
+import icons from 'url:../../img/icons.svg';
 
+/**
+ * ResultsView class
+ * @extends PreviewView
+ */
+class ResultsView extends PreviewView{
+    constructor(){
+        super();
+        this.setParentElement = document.querySelector('.search-result__list');
+        this.setErrorMessage = 'No recipes found for your query! Please try again ;)';
+        this.setMessage = '';
+    }
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default new ResultsView();</code></pre>
+        </article>
+    </section>
 
 
 

@@ -28,7 +28,6 @@ import { AJAX, sendJsonCaloriesAPI } from './helpers.js';
  * @property {number} servings
  * @property {string} sourceUrl
  * @property {string} title
- * @property {number} [key]
  * @property {boolean} [bookmarked]
  * @property {number} [totalCalories]
  */
@@ -39,6 +38,7 @@ import { AJAX, sendJsonCaloriesAPI } from './helpers.js';
  * @property {string} imageUrl
  * @property {string} publisher
  * @property {string} title
+ * @property {number} [key]
  */
 
 /**
@@ -113,6 +113,8 @@ export const loadRecipe = async function(recipeId){
         
         state.recipe = createObjectRecipe(data);
         
+        console.log(data);
+
         /** @param {reducedRecipe} bookRecipe */
         const verifyBookId = bookRecipe => state.recipe.id === bookRecipe.id;
 
@@ -183,8 +185,8 @@ export const loadSearchResults = async function(search){
         const recipesResults = await AJAX(`${API_URL}?search=${alteredSearch}&key=${API_KEY}`);
 
         state.search.query = alteredSearch;
+        console.log('Recipe being loaded: ', recipesResults);
         state.search.results = recipesResults.data.recipes.map( recipe => {
-            // console.log('Recipe being loaded: ', recipe);
 
             return {
                 id: recipe.id,
@@ -214,7 +216,7 @@ export const getSearchResultsPage = function(page = state.search.page) {
     const end = page*state.search.resultsPerPage;
 
     state.search.page = page;
-
+    
     return state.search.results.slice(start, end);
 }
 
@@ -325,3 +327,23 @@ export const uploadRecipe = async function(newRecipe){
         throw err;
     }
 }
+
+// export const sortResults = async function(sortingParam){
+//     if(!sortingParam || state.search.results.length === 0) return;
+
+//     const resultPromises = state.search.results.map(async function(val){
+//         const data = await AJAX(`${API_URL}${val.id}?key=${API_KEY}`);
+//         return data.recipe;
+//     });
+
+//     let completeResultRecipes; 
+//     Promise.all(resultPromises).then(values => console.log(values));
+
+//     console.log(completeResultRecipes);
+
+//     if(sortingParam === 'duration') console.log(state.search.results);
+//         // state.search.results.sort((prev, next) => {
+//         //     return prev-next;
+//         // })
+//         // state.search.results.sort();
+// }

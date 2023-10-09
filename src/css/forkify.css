@@ -102,18 +102,57 @@ body {
 .search-result__list {
   margin-bottom: 2rem;
 }
+.search-result__sort {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3.25rem;
+  color: #f38e82;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.search-result__sort span {
+  margin-bottom: 1rem;
+}
+
+.sort-list {
+  display: flex;
+}
+.sort-list__item {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.sort-list__item:hover {
+  transform: scale(1.1);
+}
+.sort-list__item:not(:last-child) {
+  margin-right: 1rem;
+}
 
 .page-arrows {
   padding: 0 3.5rem;
   font-family: inherit;
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
-
-.page-arrow__page {
+.page-arrows__numberPages {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: 1.3rem;
   color: #f38e82;
+  font-weight: 700;
 }
 
 .copyright {
@@ -196,9 +235,12 @@ body {
 }
 
 .ingredients {
-  padding: 5rem 8rem 0 8rem;
+  padding: 5rem 8rem;
   font-size: 1.6rem;
   background-color: #f2efee;
+}
+.ingredients__title {
+  margin-bottom: 2.5rem;
 }
 .ingredients__title, .ingredients__calories {
   color: #f38e82;
@@ -206,10 +248,9 @@ body {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 2.5rem;
 }
 .ingredients__calories {
-  padding: 5rem 0;
+  padding-top: 5rem;
 }
 .ingredients__calories span {
   color: #918581;
@@ -437,18 +478,13 @@ body {
   margin-right: 8px;
 }
 
-.page-arrows::before {
-  content: "";
-  display: table;
-  clear: both;
+.page-arrow--prev:last-child {
+  margin-right: auto;
 }
-.page-arrows--prev {
-  float: left;
+.page-arrow--next:last-child {
+  margin-left: auto;
 }
-.page-arrows--next {
-  float: right;
-}
-.page-arrows--prev, .page-arrows--next {
+.page-arrow--prev, .page-arrow--next {
   display: flex;
   align-items: center;
   color: #f38e82;
@@ -460,13 +496,13 @@ body {
   padding: 0.8rem 1.2rem;
   cursor: pointer;
 }
-.page-arrows--prev svg, .page-arrows--next svg {
+.page-arrow--prev svg, .page-arrow--next svg {
   fill: #f38e82;
   height: 1.6rem;
   width: 1.6rem;
   margin: 0 0.2rem;
 }
-.page-arrows--prev span, .page-arrows--next span {
+.page-arrow--prev span, .page-arrow--next span {
   margin: 0 0.4rem;
 }
 

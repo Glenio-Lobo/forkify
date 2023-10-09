@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: views/previewView.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,68 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: views/previewView.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** 
+ * @module previewView
+ * @description Generates a markup with reduced information about the recipes.
+ */
+import View from './view.js';
+//@ts-ignore
+import icons from 'url:../../img/icons.svg';
 
+/**
+ * PreviewView class
+ * @extends View
+ */
+export default class PreviewView extends View{
 
-    <h3> </h3>
+    /**
+     * Creates the markup preview of all available recipes
+     * @returns {string} HTML representing the preview markup of all recipes
+     */
+    _generateMarkup(){
+        return this.getData.map(recipe => this._generateMarkupPreview(recipe)).join('');
+    }
 
+    /**
+     * Creates a preview markup of an recipe
+     * @param {Object} recipe Recipe Object
+     * @returns {string} HTML representing the preview markup
+     */
+    _generateMarkupPreview(recipe){
+        const id  = window.location.hash.slice(1);
 
+        return `&lt;li class="preview">
+                    &lt;a class="preview__link ${ id === recipe.id ? 'preview__link--active' : ''}" href="#${recipe.id}">
+                        &lt;figure class="preview__figure">
+                            &lt;img src=${recipe.imageUrl} alt="Product Image">
+                        &lt;/figure>
 
+                        &lt;div class="preview__content">
+                            &lt;h4>${recipe.title}&lt;/h4>
+                            &lt;p>${recipe.publisher}&lt;/p>
 
-
-
-
-
-
-
-    
-
-
-
-
-
+                            &lt;div class="preview__user ${recipe.key ?  '' : 'hidden'}">
+                                &lt;svg>
+                                    &lt;use href="${icons}#icon-user">&lt;/use>
+                                &lt;/svg>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/a>
+                &lt;/li>`;
+    }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

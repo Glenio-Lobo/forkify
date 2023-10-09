@@ -99,9 +99,13 @@
 }
 
 .ingredients{
-    padding: 5rem 8rem 0 8rem;
+    padding: 5rem 8rem;
     font-size: 1.6rem;
     background-color: var.$color-grey-light-2;
+
+    &__title{
+        margin-bottom: 2.5rem;
+    }
 
     &__title, &__calories{
         color: var.$color-primary;
@@ -109,11 +113,10 @@
         text-align: center;
         font-weight: bold;
         text-transform: uppercase;
-        margin-bottom: 2.5rem;
     }
 
     &__calories{
-        padding: 5rem 0;
+        padding-top: 5rem;
         
         span{      
             color: var.$color-grey-dark-2

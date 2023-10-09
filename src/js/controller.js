@@ -30,6 +30,7 @@ function init(){
     recipeView.addHandlerRender(controlRecipe);
     recipeView.addHandlerUpdateServings(controlServings);
     recipeView.addHandlerAddBookmark(controlAddBookmark);
+    // resultsView.addHandlerSorting(controlSorting);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);
     bookmarkView.addHandlerRender(controlLoadBookmarks);
@@ -93,7 +94,7 @@ async function controlSearchResults(){
 
 /**
  * Control the pagination of the search results
- * @param {number} page 
+ * @param {number} page - Current page
  */
 const controlPagination = function(page){
     resultsView.render(model.getSearchResultsPage(page));
@@ -160,5 +161,10 @@ const controlAddRecipe = async function(newRecipe){
         addRecipeView.renderError(err.message);
     }
 }
+
+// const controlSorting = function(sortingParam){
+//     resultsView.renderSpinner();
+//     model.sortResults(sortingParam);
+// }
 
 init();

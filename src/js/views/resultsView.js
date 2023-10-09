@@ -18,6 +18,17 @@ class ResultsView extends PreviewView{
         this.setErrorMessage = 'No recipes found for your query! Please try again ;)';
         this.setMessage = '';
     }
+
+    // addHandlerSorting(handler){
+    //     this.getParentElement.previousElementSibling?.addEventListener('click', e => {
+    //         //@ts-ignore
+    //         const sortOption = e.target.closest('.sort-list__item');
+    //         if(!sortOption) return;
+            
+    //         if(sortOption.classList.contains('sort-list__item--ingredients')) handler('ingredients')
+    //         if(sortOption.classList.contains('sort-list__item--duration')) handler('duration')
+    //     });
+    // }
 }
 
 export default new ResultsView();

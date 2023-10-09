@@ -7,6 +7,8 @@ import { TIMEOUT_SECONDS } from './config.js';
 
 /**
  * Fetch a get or post request the informed url
+ * @function
+ * @async
  * @param {string} url API URL that will be fetched
  * @param {Object} [uploadData=undefined] Data to be uploaded on the API 
  * @returns {Promise} Data resulting from the fetch
